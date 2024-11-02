@@ -12,3 +12,12 @@ Content-Type: application/json
 ### Remover Aluno 1
 # No lugar de '/id' coloque o id do aluno a deletar
 DELETE http://localhost:3000/alunos/id
+
+PUT http://localhost:3000/alunos/id
+Content-Type: application/json
+
+{
+    "nomeCompleto": "Aluno Atualizado",
+    "email": "aluno_atualizado@teste.com",
+    "nomeCurso": "Engenharia"
+}

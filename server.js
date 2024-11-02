@@ -31,6 +31,34 @@ app.delete("/alunos/:id", (req, res) => {
   }
 });
 
+// Função para atualizar um aluno
+function update(id, dadosAtualizados) {
+  const alunoIndex = alunos.findIndex((aluno) => aluno.id === parseInt(id));
+  
+  if (alunoIndex === -1) return null; // Aluno não encontrado
+  
+  // Atualiza os dados do aluno com as novas informações
+  alunos[alunoIndex] = { ...alunos[alunoIndex], ...dadosAtualizados };
+  
+  return alunos[alunoIndex]; // Retorna o aluno atualizado
+}
+
+module.exports = { create, deleteAluno, update };
+
+// Definindo uma rota PUT em "/alunos/:id" para atualizar alunos
+app.put("/alunos/:id", (req, res) => {
+  const { id } = req.params;
+  const dadosAtualizados = req.body;
+
+  // Chama a função update para atualizar o aluno
+  const alunoAtualizado = update(id, dadosAtualizados);
+
+  if (alunoAtualizado) {
+    res.status(200).json(alunoAtualizado); // Envia o aluno atualizado em formato JSON
+  } else {
+    res.status(404).send({ message: "Aluno não encontrado" }); // Aluno não encontrado
+  }
+});
 
 app.listen(port, () =>
   console.log(`Server running at http://localhost:${port}`)
