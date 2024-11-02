@@ -1,5 +1,5 @@
 const express = require("express");
-const { create } = require("./repositories/alunoRepository");
+const { create, deleteAluno } = require("./repositories/alunoRepository");
 
 const app = express(); // Criando uma nova instância do servidor express
 const port = 3000; // Porta da app
@@ -20,6 +20,17 @@ app.post("/alunos", (req, res) => {
 app.get("/alunos", (req, res) => {
   res.send("Buscando todos os alunos");
 });
+
+app.delete("/alunos/:id", (req, res) => {
+  const { id } = req.params;
+  const removed = deleteAluno(id); // Verifica se a remoção foi bem-sucedida
+  if (removed) {
+    res.status(204).send(); // Aluno removido com sucesso
+  } else {
+    res.status(404).send({ message: "Aluno não encontrado" }); // Aluno não encontrado
+  }
+});
+
 
 app.listen(port, () =>
   console.log(`Server running at http://localhost:${port}`)

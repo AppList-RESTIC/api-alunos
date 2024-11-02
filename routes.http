@@ -1,11 +1,14 @@
+### Criar Aluno 1
 POST http://localhost:3000/alunos
 Content-Type: application/json
 
 {
     "nomeCompleto": "Aluno 1",
-    "email": "aluno@teset.com",
+    "email": "aluno@teste.com",
     "nomeCurso": "Matematica"
-    
 }
 
-GE
+
+### Remover Aluno 1
+# No lugar de '/id' coloque o id do aluno a deletar
+DELETE http://localhost:3000/alunos/id

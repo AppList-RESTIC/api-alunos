@@ -18,7 +18,20 @@ function create({ nomeCompleto, email, nomeCurso }) {
   return aluno;
 }
 
+function deleteAluno(id) {
+  // Encontra o índice do aluno no array com base no ID fornecido
+  const index = alunos.findIndex(aluno => aluno.id === id);
+
+  if (index === -1) {
+    console.log('Aluno não encontrado');
+    return false; // Aluno não foi encontrado
+  }
+  alunos.splice(index, 1); // Remove o aluno no índice encontrado
+  console.log('Aluno deletado');
+  return true; 
+}
+
 // Exporta a funções para utilizar em outros módulos
 module.exports = {
-  create,
+  create,deleteAluno
 };
