@@ -31,7 +31,14 @@ function deleteAluno(id) {
   return true; 
 }
 
-// Exporta a funções para utilizar em outros módulos
+// Função para obter todos os alunos
+function getAllAlunos() {
+  return alunos;
+}
+
+// Exporta as funções para utilizar em outros módulos
 module.exports = {
-  create,deleteAluno
+  create,
+  deleteAluno,
+  getAllAlunos
 };

@@ -1,5 +1,5 @@
 const express = require("express");
-const { create, deleteAluno } = require("./repositories/alunoRepository");
+const { create, deleteAluno, getAllAlunos } = require("./repositories/alunoRepository");
 
 const app = express(); // Criando uma nova instância do servidor express
 const port = 3000; // Porta da app
@@ -18,7 +18,8 @@ app.post("/alunos", (req, res) => {
 
 // Definindo uma rota GET em "/alunos" para listar alunos
 app.get("/alunos", (req, res) => {
-  res.send("Buscando todos os alunos");
+  const alunos = getAllAlunos(); // Obtém todos os alunos
+  res.status(200).json(alunos); // Retorna a lista de alunos em formato JSON
 });
 
 app.delete("/alunos/:id", (req, res) => {
