@@ -1,4 +1,5 @@
 const express = require("express");
+const { create } = require("./repositories/alunoRepository");
 
 const app = express(); // Criando uma nova instância do servidor express
 const port = 3000; // Porta da app

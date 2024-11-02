@@ -17,3 +17,8 @@ function create({ nomeCompleto, email, nomeCurso }) {
   // Retorna o objeto do aluno criado
   return aluno;
 }
+
+// Exporta a funções para utilizar em outros módulos
+module.exports = {
+  create,
+};

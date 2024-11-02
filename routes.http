@@ -1,0 +1,11 @@
+POST http://localhost:3000/alunos
+Content-Type: application/json
+
+{
+    "nomeCompleto": "Aluno 1",
+    "email": "aluno@teset.com",
+    "nomeCurso": "Matematica"
+    
+}
+
+GE
