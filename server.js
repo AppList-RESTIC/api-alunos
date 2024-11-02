@@ -1,5 +1,5 @@
 const express = require("express");
-const { create, deleteAluno, getAllAlunos } = require("./repositories/alunoRepository");
+const { create, update, deleteAluno, getAllAlunos } = require("./repositories/alunoRepository");
 
 const app = express(); // Criando uma nova instância do servidor express
 const port = 3000; // Porta da app
@@ -22,30 +22,6 @@ app.get("/alunos", (req, res) => {
   res.status(200).json(alunos); // Retorna a lista de alunos em formato JSON
 });
 
-app.delete("/alunos/:id", (req, res) => {
-  const { id } = req.params;
-  const removed = deleteAluno(id); // Verifica se a remoção foi bem-sucedida
-  if (removed) {
-    res.status(204).send(); // Aluno removido com sucesso
-  } else {
-    res.status(404).send({ message: "Aluno não encontrado" }); // Aluno não encontrado
-  }
-});
-
-// Função para atualizar um aluno
-function update(id, dadosAtualizados) {
-  const alunoIndex = alunos.findIndex((aluno) => aluno.id === parseInt(id));
-  
-  if (alunoIndex === -1) return null; // Aluno não encontrado
-  
-  // Atualiza os dados do aluno com as novas informações
-  alunos[alunoIndex] = { ...alunos[alunoIndex], ...dadosAtualizados };
-  
-  return alunos[alunoIndex]; // Retorna o aluno atualizado
-}
-
-module.exports = { create, deleteAluno, update };
-
 // Definindo uma rota PUT em "/alunos/:id" para atualizar alunos
 app.put("/alunos/:id", (req, res) => {
   const { id } = req.params;
@@ -60,6 +36,17 @@ app.put("/alunos/:id", (req, res) => {
     res.status(404).send({ message: "Aluno não encontrado" }); // Aluno não encontrado
   }
 });
+
+app.delete("/alunos/:id", (req, res) => {
+  const { id } = req.params;
+  const removed = deleteAluno(id); // Verifica se a remoção foi bem-sucedida
+  if (removed) {
+    res.status(204).send(); // Aluno removido com sucesso
+  } else {
+    res.status(404).send({ message: "Aluno não encontrado" }); // Aluno não encontrado
+  }
+});
+
 
 app.listen(port, () =>
   console.log(`Server running at http://localhost:${port}`)
