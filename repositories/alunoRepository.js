@@ -18,7 +18,6 @@ function create({ nomeCompleto, email, nomeCurso }) {
   return aluno;
 }
 
-
 // Função para obter todos os alunos
 function getAllAlunos() {
   return alunos;
@@ -27,34 +26,32 @@ function getAllAlunos() {
 // Função para atualizar um aluno
 function update(id, dadosAtualizados) {
   const alunoIndex = alunos.findIndex((aluno) => aluno.id === parseInt(id));
-  
+
   if (alunoIndex === -1) return null; // Aluno não encontrado
-  
+
   // Atualiza os dados do aluno com as novas informações
   alunos[alunoIndex] = { ...alunos[alunoIndex], ...dadosAtualizados };
-  
+
   return alunos[alunoIndex]; // Retorna o aluno atualizado
 }
 
 function deleteAluno(id) {
   // Encontra o índice do aluno no array com base no ID fornecido
-  const index = alunos.findIndex(aluno => aluno.id === id);
+  const index = alunos.findIndex((aluno) => aluno.id === id);
 
   if (index === -1) {
-    console.log('Aluno não encontrado');
+    console.log("Aluno não encontrado");
     return false; // Aluno não foi encontrado
   }
   alunos.splice(index, 1); // Remove o aluno no índice encontrado
-  console.log('Aluno deletado');
-  return true; 
+  console.log("Aluno deletado");
+  return true;
 }
 
 // Exporta as funções para utilizar em outros módulos
 module.exports = {
   create,
-  deleteAluno,
   getAllAlunos,
-  update
+  update,
+  deleteAluno,
 };
-
-
