@@ -3,9 +3,9 @@ POST http://localhost:3000/alunos
 Content-Type: application/json
 
 {
-    "nomeCompleto": "Aluno 1",
-    "email": "aluno@teste.com",
-    "nomeCurso": "Matematica"
+    "nomeCompleto": "Aluno 4",
+    "email": "aluno4@teste.com",
+    "nomeCurso": "Geografia"
 }
 
 ###
@@ -15,6 +15,7 @@ Content-Type: application/json
 
 ###
 # Atualizar
+# No lugar de '/id' coloque o id do aluno para atualizar
 PUT http://localhost:3000/alunos/id
 Content-Type: application/json
 

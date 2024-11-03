@@ -25,7 +25,7 @@ function getAllAlunos() {
 
 // Função para atualizar um aluno
 function update(id, dadosAtualizados) {
-  const alunoIndex = alunos.findIndex((aluno) => aluno.id === parseInt(id));
+  const alunoIndex = alunos.findIndex((aluno) => aluno.id === id);
 
   if (alunoIndex === -1) return null; // Aluno não encontrado
 
